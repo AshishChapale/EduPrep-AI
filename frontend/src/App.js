@@ -1225,12 +1225,15 @@ function EduPrepApp() {
                                                 }))
                                         ).filter(item => item.subject);
 
+                                        const token = await getToken();
+
                                         const response = await fetch(
                                             'http://localhost:5000/api/planner/priorities',
                                             {
                                                 method: 'POST',
                                                 headers: {
-                                                    'Content-Type': 'application/json'
+                                                    'Content-Type': 'application/json',
+                                                    Authorization: `Bearer ${token}`
                                                 },
                                                 body: JSON.stringify({ topics })
                                             }
